@@ -1,0 +1,309 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: project-nexus-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  gateway-01:
+    build: ./applications/microservices/go/gateway-01
+    container_name: project-nexus-gateway-01
+    ports:
+      - "18001:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-02:
+    build: ./applications/microservices/go/gateway-02
+    container_name: project-nexus-gateway-02
+    ports:
+      - "18002:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-03:
+    build: ./applications/microservices/go/gateway-03
+    container_name: project-nexus-gateway-03
+    ports:
+      - "18003:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-04:
+    build: ./applications/microservices/go/gateway-04
+    container_name: project-nexus-gateway-04
+    ports:
+      - "18004:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-05:
+    build: ./applications/microservices/go/gateway-05
+    container_name: project-nexus-gateway-05
+    ports:
+      - "18005:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-06:
+    build: ./applications/microservices/go/gateway-06
+    container_name: project-nexus-gateway-06
+    ports:
+      - "18006:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-07:
+    build: ./applications/microservices/go/gateway-07
+    container_name: project-nexus-gateway-07
+    ports:
+      - "18007:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-08:
+    build: ./applications/microservices/go/gateway-08
+    container_name: project-nexus-gateway-08
+    ports:
+      - "18008:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-09:
+    build: ./applications/microservices/go/gateway-09
+    container_name: project-nexus-gateway-09
+    ports:
+      - "18009:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  gateway-10:
+    build: ./applications/microservices/go/gateway-10
+    container_name: project-nexus-gateway-10
+    ports:
+      - "18010:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  inference-01:
+    build: ./applications/microservices/python/inference-01
+    container_name: project-nexus-inference-01
+    ports:
+      - "28001:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-02:
+    build: ./applications/microservices/python/inference-02
+    container_name: project-nexus-inference-02
+    ports:
+      - "28002:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-03:
+    build: ./applications/microservices/python/inference-03
+    container_name: project-nexus-inference-03
+    ports:
+      - "28003:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-04:
+    build: ./applications/microservices/python/inference-04
+    container_name: project-nexus-inference-04
+    ports:
+      - "28004:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-05:
+    build: ./applications/microservices/python/inference-05
+    container_name: project-nexus-inference-05
+    ports:
+      - "28005:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-06:
+    build: ./applications/microservices/python/inference-06
+    container_name: project-nexus-inference-06
+    ports:
+      - "28006:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-07:
+    build: ./applications/microservices/python/inference-07
+    container_name: project-nexus-inference-07
+    ports:
+      - "28007:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-08:
+    build: ./applications/microservices/python/inference-08
+    container_name: project-nexus-inference-08
+    ports:
+      - "28008:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-09:
+    build: ./applications/microservices/python/inference-09
+    container_name: project-nexus-inference-09
+    ports:
+      - "28009:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  inference-10:
+    build: ./applications/microservices/python/inference-10
+    container_name: project-nexus-inference-10
+    ports:
+      - "28010:8080"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  api-01:
+    build: ./applications/microservices/typescript/api-01
+    container_name: project-nexus-api-01
+    ports:
+      - "38001:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-02:
+    build: ./applications/microservices/typescript/api-02
+    container_name: project-nexus-api-02
+    ports:
+      - "38002:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-03:
+    build: ./applications/microservices/typescript/api-03
+    container_name: project-nexus-api-03
+    ports:
+      - "38003:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-04:
+    build: ./applications/microservices/typescript/api-04
+    container_name: project-nexus-api-04
+    ports:
+      - "38004:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-05:
+    build: ./applications/microservices/typescript/api-05
+    container_name: project-nexus-api-05
+    ports:
+      - "38005:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-06:
+    build: ./applications/microservices/typescript/api-06
+    container_name: project-nexus-api-06
+    ports:
+      - "38006:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-07:
+    build: ./applications/microservices/typescript/api-07
+    container_name: project-nexus-api-07
+    ports:
+      - "38007:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-08:
+    build: ./applications/microservices/typescript/api-08
+    container_name: project-nexus-api-08
+    ports:
+      - "38008:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-09:
+    build: ./applications/microservices/typescript/api-09
+    container_name: project-nexus-api-09
+    ports:
+      - "38009:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
+
+  api-10:
+    build: ./applications/microservices/typescript/api-10
+    container_name: project-nexus-api-10
+    ports:
+      - "38010:8080"
+    environment:
+      PORT: 8080
+    restart: unless-stopped
