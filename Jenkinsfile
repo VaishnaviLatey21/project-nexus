@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(false)
+    }
+
     environment {
         IMAGE_NAME = "localhost:5000/project-nexus"
         IMAGE_TAG  = "${BUILD_NUMBER}"
@@ -8,12 +12,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
 
         stage('Test') {
             steps {
@@ -24,8 +22,8 @@ pipeline {
                     python -m py_compile applications/app.py
                 '''
             }
-        }
-
+        }       
+ 
         stage('Build Docker Image') {
             steps {
                 sh '''
