@@ -32,16 +32,16 @@ pipeline {
         }
 
         stage('Security Scan') {
-            steps {
-                sh '''
-                    trivy image \
-                    --severity CRITICAL \
-                    --exit-code 1 \
-                    --no-progress \
-                    ${IMAGE_NAME}:${IMAGE_TAG}
-                '''
-            }
-        }
+    steps {
+        sh '''
+            trivy image \
+              --severity CRITICAL \
+              --exit-code 1 \
+              --no-progress \
+              ${IMAGE_NAME}:${IMAGE_TAG}
+        '''
+    }
+}
 
         stage('Push Image') {
             steps {
