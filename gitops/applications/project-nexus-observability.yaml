@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: project-nexus-observability
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/VaishnaviLatey21/project-nexus.git
+    targetRevision: main
+    path: platform/observability
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: project-nexus
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
