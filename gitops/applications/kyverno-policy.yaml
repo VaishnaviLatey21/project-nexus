@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno-policy
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/VaishnaviLatey21/project-nexus.git
+    targetRevision: main
+    path: platform/kyverno
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kyverno
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
