@@ -73,23 +73,23 @@ spec:
                 cpu: 200m
                 memory: 64Mi
 
-          admissionWebhooks:
-            create:
-              resources:
-                requests:
-                  cpu: 50m
-                  memory: 32Mi
-                limits:
-                  cpu: 200m
-                  memory: 128Mi
-            patch:
-              resources:
-                requests:
-                  cpu: 50m
-                  memory: 32Mi
-                limits:
-                  cpu: 200m
-                  memory: 128Mi
+              admissionWebhooks:
+      create:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 32Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+      patch:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 32Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
 
   destination:
     server: https://kubernetes.default.svc
