@@ -64,16 +64,6 @@ spec:
                 cpu: 500m
                 memory: 256Mi
 
-            admissionWebhooks:
-              patch:
-                resources:
-                  requests:
-                    cpu: 50m
-                    memory: 32Mi
-                  limits:
-                    cpu: 200m
-                    memory: 128Mi
-
           nodeExporter:
             resources:
               requests:
