@@ -13,12 +13,7 @@ spec:
       enabled: true
 
   matchConstraints:
-    namespaceSelector:
-      matchExpressions:
-        - key: project-nexus/policy-exempt
-          operator: NotIn
-          values:
-            - "true"
+  
     resourceRules:
       - apiGroups:
           - ""
