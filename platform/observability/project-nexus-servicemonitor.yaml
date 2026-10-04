@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: project-nexus
+  namespace: project-nexus
+  labels:
+    app: project-nexus
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: project-nexus
+
+  namespaceSelector:
+    matchNames:
+      - project-nexus
+
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
